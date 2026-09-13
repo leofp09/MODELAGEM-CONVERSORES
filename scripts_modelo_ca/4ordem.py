@@ -42,9 +42,9 @@ import numpy as np
 # ============================================================
 
 L1 = 500e-6      # Indutancia L1 [H]
-L2 = 500e-6      # Indutancia L2 [H]
-C1 = 100e-6      # Capacitancia C1 [F]
-C2 = 100e-6      # Capacitancia C2 [F]
+L2 = 1e-3        # Indutancia L2 [H]
+C1 = 47e-6       # Capacitancia C1 [F]
+C2 = 47e-6       # Capacitancia C2 [F]
 R = 5            # Carga [ohm]
 Vin = 48         # Tensao de entrada [V]
 D = 0.4          # Razao ciclica nominal
@@ -209,11 +209,39 @@ print('Ep =\n', Ep)
 print()
 
 print('PARAMETROS PARA LTspice')
-print(f'.param A11={A[0,0]:.12g} A12={A[0,1]:.12g} A13={A[0,2]:.12g} A14={A[0,3]:.12g}')
-print(f'.param A21={A[1,0]:.12g} A22={A[1,1]:.12g} A23={A[1,2]:.12g} A24={A[1,3]:.12g}')
-print(f'.param A31={A[2,0]:.12g} A32={A[2,1]:.12g} A33={A[2,2]:.12g} A34={A[2,3]:.12g}')
-print(f'.param A41={A[3,0]:.12g} A42={A[3,1]:.12g} A43={A[3,2]:.12g} A44={A[3,3]:.12g}')
-print(f'.param B11={B[0,0]:.12g} B21={B[1,0]:.12g} B31={B[2,0]:.12g} B41={B[3,0]:.12g}')
-print(f'.param C11={C[0,0]:.12g} C12={C[0,1]:.12g} C13={C[0,2]:.12g} C14={C[0,3]:.12g}')
+print(f'.param A11={A[0,0]:.12g}')
+print(f'.param A12={A[0,1]:.12g}')
+print(f'.param A13={A[0,2]:.12g}')
+print(f'.param A14={A[0,3]:.12g}')
+print()
+print(f'.param A21={A[1,0]:.12g}')
+print(f'.param A22={A[1,1]:.12g}')
+print(f'.param A23={A[1,2]:.12g}')
+print(f'.param A24={A[1,3]:.12g}')
+print()
+print(f'.param A31={A[2,0]:.12g}')
+print(f'.param A32={A[2,1]:.12g}')
+print(f'.param A33={A[2,2]:.12g}')
+print(f'.param A34={A[2,3]:.12g}')
+print()
+print(f'.param A41={A[3,0]:.12g}')
+print(f'.param A42={A[3,1]:.12g}')
+print(f'.param A43={A[3,2]:.12g}')
+print(f'.param A44={A[3,3]:.12g}')
+print()
+print(f'.param B11={B[0,0]:.12g}')
+print(f'.param B21={B[1,0]:.12g}')
+print(f'.param B31={B[2,0]:.12g}')
+print(f'.param B41={B[3,0]:.12g}')
+print()
+print(f'.param C11={C[0,0]:.12g}')
+print(f'.param C12={C[0,1]:.12g}')
+print(f'.param C13={C[0,2]:.12g}')
+print(f'.param C14={C[0,3]:.12g}')
+print()
 print(f'.param D11={E[0,0]:.12g}')
-print(f'.param IC1={X[0,0]:.12g} IC2={X[1,0]:.12g} IC3={X[2,0]:.12g} IC4={X[3,0]:.12g}')
+print()
+print(f'.param IC1={X[0,0]:.12g}')
+print(f'.param IC2={X[1,0]:.12g}')
+print(f'.param IC3={X[2,0]:.12g}')
+print(f'.param IC4={X[3,0]:.12g}')

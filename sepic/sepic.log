@@ -1,6 +1,6 @@
 LTspice 24.0.12 for Windows
 Circuit: * D:\ARQUIVOS DO USUÁRIO\Desktop\a pasta\programas\conversores\MODELAGEM-CONVERSORES\sepic\sepic.asc
-Start Time: Sat Sep 12 21:56:28 2026
+Start Time: Sat Sep 12 22:28:30 2026
 solver = Normal
 Maximum thread count: 12
 tnom = 27
@@ -8,5 +8,5 @@ temp = 27
 method = modified trap
 Per .tran options, skipping operating point for transient analysis.
 Ignoring empty pin current: Ix(u2:in)
-Total elapsed time: 1.011 seconds.
+Total elapsed time: 0.945 seconds.
 
