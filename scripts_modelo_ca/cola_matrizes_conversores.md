@@ -236,27 +236,27 @@ Estados:
 
 ```text
 x1 = iL1, positivo de Vin para o no da chave
-x2 = vCs = V(sw) - V(mid)
+x2 = vC1 = V(sw) - V(mid)
 x3 = iL2, positivo do terra para o no mid
-x4 = vCo = Vout
+x4 = vC2 = Vout
 u  = Vin
-y  = vCo
+y  = vC2
 ```
 
 ### 1a etapa: chave ligada
 
 ```text
 dx1/dt = Vin/L1
-dx2/dt = -x3/Cs
+dx2/dt = -x3/C1
 dx3/dt = x2/L2
-dx4/dt = -x4/(R*Co)
+dx4/dt = -x4/(R*C2)
 ```
 
 ```text
 A1 = [ 0  0       0       0
-       0  0      -1/Cs    0
+       0  0      -1/C1    0
        0  1/L2    0       0
-       0  0       0      -1/(R*Co) ]
+       0  0       0      -1/(R*C2) ]
 
 B1 = [ 1/L1
        0
@@ -271,16 +271,16 @@ E1 = [0]
 
 ```text
 dx1/dt = (Vin - x2 - x4)/L1
-dx2/dt = x1/Cs
+dx2/dt = x1/C1
 dx3/dt = -x4/L2
-dx4/dt = (x1 + x3)/Co - x4/(R*Co)
+dx4/dt = (x1 + x3)/C2 - x4/(R*C2)
 ```
 
 ```text
 A2 = [ 0      -1/L1  0      -1/L1
-       1/Cs    0     0       0
+       1/C1    0     0       0
        0       0     0      -1/L2
-       1/Co    0     1/Co   -1/(R*Co) ]
+       1/C2    0     1/C2   -1/(R*C2) ]
 
 B2 = [ 1/L1
        0
@@ -295,9 +295,9 @@ E2 = [0]
 
 ```text
 A = [ 0              -(1-D)/L1   0             -(1-D)/L1
-      (1-D)/Cs       0          -D/Cs          0
+      (1-D)/C1       0          -D/C1          0
       0              D/L2        0             -(1-D)/L2
-      (1-D)/Co       0           (1-D)/Co      -1/(R*Co) ]
+      (1-D)/C2       0           (1-D)/C2      -1/(R*C2) ]
 
 B = [ 1/L1
       0
@@ -316,11 +316,11 @@ Estados:
 
 ```text
 x1 = iL1
-x2 = vCs, tensao no capacitor de transferencia
+x2 = vC1, tensao no capacitor de transferencia
 x3 = iL2
-x4 = vCo, modulo da tensao de saida invertida
+x4 = vC2, modulo da tensao de saida invertida
 u  = Vin
-y  = vCo
+y  = vC2
 ```
 
 Nesta convencao, `x4` representa o modulo positivo da saida. A tensao fisica do conversor Cuk inversor e `-x4`.
@@ -329,16 +329,16 @@ Nesta convencao, `x4` representa o modulo positivo da saida. A tensao fisica do 
 
 ```text
 dx1/dt = Vin/L1
-dx2/dt = -x3/Cs
+dx2/dt = -x3/C1
 dx3/dt = (x2 - x4)/L2
-dx4/dt = x3/Co - x4/(R*Co)
+dx4/dt = x3/C2 - x4/(R*C2)
 ```
 
 ```text
 A1 = [ 0  0       0       0
-       0  0      -1/Cs    0
+       0  0      -1/C1    0
        0  1/L2    0      -1/L2
-       0  0       1/Co   -1/(R*Co) ]
+       0  0       1/C2   -1/(R*C2) ]
 
 B1 = [ 1/L1
        0
@@ -353,16 +353,16 @@ E1 = [0]
 
 ```text
 dx1/dt = (Vin - x2)/L1
-dx2/dt = x1/Cs
+dx2/dt = x1/C1
 dx3/dt = -x4/L2
-dx4/dt = x3/Co - x4/(R*Co)
+dx4/dt = x3/C2 - x4/(R*C2)
 ```
 
 ```text
 A2 = [ 0      -1/L1  0      0
-       1/Cs    0     0      0
+       1/C1    0     0      0
        0       0     0     -1/L2
-       0       0     1/Co  -1/(R*Co) ]
+       0       0     1/C2  -1/(R*C2) ]
 
 B2 = [ 1/L1
        0
@@ -377,9 +377,9 @@ E2 = [0]
 
 ```text
 A = [ 0              -(1-D)/L1  0       0
-      (1-D)/Cs       0         -D/Cs    0
+      (1-D)/C1       0         -D/C1    0
       0              D/L2       0      -1/L2
-      0              0          1/Co   -1/(R*Co) ]
+      0              0          1/C2   -1/(R*C2) ]
 
 B = [ 1/L1
       0
@@ -398,33 +398,33 @@ Estados:
 
 ```text
 x1 = iL1
-x2 = iL2
-x3 = vCs, tensao no capacitor de transferencia
-x4 = vCo = Vout
+x2 = vC1, tensao no capacitor de transferencia
+x3 = iL2
+x4 = vC2 = Vout
 u  = Vin
-y  = vCo
+y  = vC2
 ```
 
-Com esta convencao, `x3` pode aparecer negativo no ponto de operacao, dependendo da polaridade escolhida para o capacitor de transferencia.
+Com esta convencao, `x2` pode aparecer negativo no ponto de operacao, dependendo da polaridade escolhida para o capacitor de transferencia.
 
 ### 1a etapa: chave ligada
 
 ```text
 dx1/dt = Vin/L1
-dx2/dt = (Vin - x3 - x4)/L2
-dx3/dt = x2/Cs
-dx4/dt = x2/Co - x4/(R*Co)
+dx2/dt = x3/C1
+dx3/dt = (Vin - x2 - x4)/L2
+dx4/dt = x3/C2 - x4/(R*C2)
 ```
 
 ```text
 A1 = [ 0  0       0       0
-       0  0      -1/L2   -1/L2
-       0  1/Cs    0       0
-       0  1/Co    0      -1/(R*Co) ]
+       0  0       1/C1    0
+       0 -1/L2    0      -1/L2
+       0  0       1/C2   -1/(R*C2) ]
 
 B1 = [ 1/L1
-       1/L2
        0
+       1/L2
        0 ]
 
 C1 = [0  0  0  1]
@@ -434,17 +434,17 @@ E1 = [0]
 ### 2a etapa: chave desligada
 
 ```text
-dx1/dt = x3/L1
-dx2/dt = -x4/L2
-dx3/dt = -x1/Cs
-dx4/dt = x2/Co - x4/(R*Co)
+dx1/dt = x2/L1
+dx2/dt = -x1/C1
+dx3/dt = -x4/L2
+dx4/dt = x3/C2 - x4/(R*C2)
 ```
 
 ```text
-A2 = [ 0       0      1/L1   0
+A2 = [ 0       1/L1   0      0
+      -1/C1    0      0      0
        0       0      0     -1/L2
-      -1/Cs    0      0      0
-       0       1/Co   0     -1/(R*Co) ]
+       0       0      1/C2  -1/(R*C2) ]
 
 B2 = [ 0
        0
@@ -458,14 +458,14 @@ E2 = [0]
 ### Media
 
 ```text
-A = [ 0          0       (1-D)/L1   0
-      0          0      -D/L2      -1/L2
-     -(1-D)/Cs   D/Cs    0          0
-      0          1/Co    0         -1/(R*Co) ]
+A = [ 0              (1-D)/L1   0       0
+     -(1-D)/C1       0          D/C1    0
+      0             -D/L2       0      -1/L2
+      0              0          1/C2   -1/(R*C2) ]
 
 B = [ D/L1
-      D/L2
       0
+      D/L2
       0 ]
 
 C = [0  0  0  1]

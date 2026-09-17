@@ -41,13 +41,13 @@ import numpy as np
 # PARAMETROS DO CIRCUITO
 # ============================================================
 
-L1 = 220e-6      # Indutancia L1 [H]
-L2 = 220e-6        # Indutancia L2 [H]
-C1 = 47e-6       # Capacitancia C1 [F]
+L1 = 150e-6      # Indutancia L1 [H]
+L2 = 150e-6        # Indutancia L2 [H]
+C1 = 22e-6       # Capacitancia C1 [F]
 C2 = 100e-6       # Capacitancia C2 [F]
-R = 3            # Carga [ohm]
+R = 5            # Carga [ohm]
 Vin = 12        # Tensao de entrada [V]
-D = 0.3          # Razao ciclica nominal
+D = 0.294          # Razao ciclica nominal
 
 # ============================================================
 # 1a ETAPA: CHAVE LIGADA
@@ -61,16 +61,16 @@ D = 0.3          # Razao ciclica nominal
 #   dx4/dt = -x4/(R*C2)
 
 A1 = np.array([
-    [0, 0, 0, 0],
-    [0, 0, -1/C1, 0],
-    [0, 1/L2, 0, -1/L2],
-    [0, 0, 1/C2, -1/(R*C2)]
+    [0, 0, 0, 0],           #somente L1
+    [0, 0, -1/C1, 0],       #somente C1
+    [0, 1/L2, 0, -1/L2],    #somente L2
+    [0, 0, 1/C2, -1/(R*C2)] #somente C2 normalmente = vo
 ], dtype=float)
 
 B1 = np.array([
-    [1/L1],
+    [1/L1],  
     [0],
-    [0],
+    [1/L2],
     [0]
 ], dtype=float)
 
@@ -94,14 +94,14 @@ E1 = np.array([
 #   dx4/dt = (x1 + x3)/C2 - x4/(R*C2)
 
 A2 = np.array([
-    [0, 1/L1, 0, 0],
-    [-1/C1, 0, 0, 0],
+    [0, -1/L1, 0, 0],
+    [1/C1, 0, 0, 0],
     [0, 0, 0, -1/L2],
     [0, 0, 1/C2, -1/(R*C2)]
 ], dtype=float)
 
 B2 = np.array([
-    [1/L1],
+    [0],
     [0],
     [0],
     [0]
